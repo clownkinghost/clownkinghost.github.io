@@ -80,7 +80,6 @@
 </script>
 <script>
 function load_poc(){
- if (sessionStorage.exploit == "yes"){
  var req = new XMLHttpRequest();
  req.responseType = "arraybuffer";
  req.open('GET', PLfile);
@@ -98,7 +97,7 @@ function load_poc(){
    pl.set(shellcode,0);
    var pthread = p.malloc(0x10);
    chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-	setTimeout(allset, 50);
+	   goldset();
   }
  };
 }
@@ -179,37 +178,37 @@ function goldhen24(){
 function load_DisableUpdates(){
     progress.innerHTML="Payload sending... please wait";
     PLfile = "disableupdates.bin";
-    load_poc();
+    GetPL();
 }
 function load_EnableUpdates(){
     progress.innerHTML="Payload sending... please wait";
     PLfile = "enableupdates.bin";
-    load_poc();
+    GetPL();
 }
 function load_FTP(){
     progress.innerHTML="Payload sending... please wait";
     PLfile = "ftp.bin";
-    load_poc();
+    GetPL();
 }
 function load_App2USB(){
     progress.innerHTML="Payload sending... please wait";
     PLfile = "app2usb.bin";
-    load_poc();
+    GetPL();
 }
 function load_WebRTE(){
     progress.innerHTML="Payload sending... please wait";
     PLfile = "WebRTE.bin";
-    load_poc();
+    GetPL();
 }
 function load_PS4Debug(){
     progress.innerHTML="Payload sending... please wait";
     PLfile = "ps4debug.bin";
-    load_poc();
+    GetPL();
 }
 function load_Orbis(){
     progress.innerHTML="Payload sending... please wait";
     PLfile = "Orbis.bin";
-    load_poc();
+    GetPL();
 }
 </script>
 <footer>
