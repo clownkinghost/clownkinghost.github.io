@@ -1,59 +1,74 @@
 <!DOCTYPE html>
-<html manifest="cache.manifest">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clown King Host - BETA</title>
+       <!-- Favicon -->
+    <link rel="icon" href="" type="image/x-icon">
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <!-- End Favicon -->
     <style>
         body {
-            background-color: #000;
-            color: #fff;
-            background-size: cover;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            font-family: 'Sans-Serif', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            font-family: 'sans-serif';
+            padding: 0;
+            background-color: #000;
+            color: #ecf0f1;
+            transition: background-color 0.5s, color 0.5s;
+	    font-family: 'sans-serif';
 	    font-size: 20px;
         }
-
-        .dropdown-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+                main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+	    border: 2px solid white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            transition: background-color 0.5s;
+	    font-size: 25px;
         }
 
-        select {
-            font-size: 16px; /* Ukuran font dropdown */
-            padding: 10px;
-            margin-bottom: 10px;
+        section {
+            margin-bottom: 20px;
+	    text-align: center;
         }
+
         footer {
 	    color: #fff;
+	    border: 2px solid white;
             text-align: center;
             padding: 1em;
             bottom: 0;
-			border: 2px solid white;
-      	    margin: 20px auto;
-            max-width: 650px;
+      	    margin: auto;
+            max-width: 800px;
       	    border-radius: 10px;
-
+      	    background-color: #000000;
         }
         .submit-button {
-            font-size: 20px; /* Ukuran font tombol submit */
+            font-size: 16px; /* Ukuran font tombol submit */
             font-weight: bold;
-            background-color: #2a2a2a; /* Warna tombol submit */
-            color: #fff;
+            background-color: grey; /* Warna tombol submit */
+            color: #000;
             padding: 12px 24px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease; /* Efek hover */
-            text-decoration: none;
+
         }
 
         .submit-button:hover {
-            background-color: #fff; /* Warna tombol saat dihover */
-			color: #2a2a2a;
+            background-color: #ffffff; /* Warna tombol saat dihover */
+            color: #000;
+        }
+        h2 {
+            color: #ffffff;
+        }
+
+        a {
+            color: #e74c3c;
         }
 	.title {
 	font-size: 30px; 
@@ -63,169 +78,87 @@
  	display: flex;
 	font-weight: bold;
 	}
-        .element-dengan-garis {
+	.element-dengan-garis {
             border-bottom: 2px solid grey; /* Garis tepi 2 piksel dengan warna biru */
             padding: 20px; /* Ruang dalam elemen */
             margin: auto; /* Ruang luar elemen */
 	    text-align: center;
 	    max-width: 1285px;
         }
-      #progress {
-		font-weight: bold;
-		font-size: 20px;
-		}
+        #clock {
+            font-size: 30px;
+
+	    float: right;
+	    font-weight: bold;
+	}
+        #currentDate {
+	    font-size: 30px;
+	    float: left;
+	    font-weight: bold;
+
+        }
     </style>
-    <title>Clown Host | PS4 9.00 Exploit</title>
-<script>
-window.applicationCache.ondownloading = function()
-{
-alert("Caching started! Press OK and check progress on the bottom of the page.")
-};
-window.applicationCache.onprogress = function(a)
-{
-document.getElementById("progress").innerHTML="Caching "+(Math.round(100*(a.loaded/a.total)))+"% Completed";
-};
-window.applicationCache.oncached = window.applicationCache.onupdateready = function()
-{
-alert("Page cached successfully. Press OK and reopen browser.")
-};
-</script>
-<script>
-function load_poc(){
- var req = new XMLHttpRequest();
- req.responseType = "arraybuffer";
- req.open('GET', PLfile);
- req.send();
- req.onreadystatechange = function () {
-  if (req.readyState == 4) {
-   PLD = req.response;
-   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
-   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
-   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
-   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
-   tmp.set(new Uint8Array(req.response), 0);
-   tmp.set(padding, req.response.byteLength);
-   var shellcode = new Uint32Array(tmp.buffer);
-   pl.set(shellcode,0);
-   var pthread = p.malloc(0x10);
-   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-   goldset();
-  }
- };
-}
-
-function GetPL(){
- var req=new XMLHttpRequest();req.open("GET","http://127.0.0.1:9090/status");req.send();
- req.onerror=function(){alert("Cannot Load Payload Because The BinLoader Server Is Not Running");return;};
- req.onload=function(){
-  var responseJson=JSON.parse(req.responseText);
-  if(responseJson.status=="ready"){
-   getPayload(PLfile,function(req){if((req.status===200||req.status===304)&&req.response){sendPayload("http://127.0.0.1:9090",req.response);}});
-  }
-  else{alert("Cannot Load Payload Because The BinLoader Server Is Busy");return;}
- };
- var getPayload=function(pl,onLoadEndCallback){
-  var req=new XMLHttpRequest();req.open('GET',pl);req.send();req.responseType="arraybuffer";
-  req.onload=function(event){if(onLoadEndCallback)onLoadEndCallback(req,event);};
- };
- var sendPayload=function(url,data,onLoadEndCallback){
-  var req=new XMLHttpRequest();req.open("POST",url,true);req.send(data);
-  req.onload=function(event){
-   allset();
-   if(onLoadEndCallback)onLoadEndCallback(req,event);
-  };
- };
-}
-
-function allset() {
-window.progress.innerHTML="Payload loaded";
-}
-
-function goldset() {
-window.progress.innerHTML="GoldHEN loaded";
-}
-
-function goldhen22(){
-    progress.innerHTML="Goldhen 2.2.4 loading... please wait";
-    PLfile = "goldhen22.bin";
-    setTimeout(poc, 500); 
-}
-function goldhen23(){
-    progress.innerHTML="Goldhen 2.3 loading... please wait";
-    PLfile = "goldhen23.bin";
-    setTimeout(poc, 500); 
-}
-function goldhen24(){
-    progress.innerHTML="Goldhen 2.4b14 loading... please wait";
-    PLfile = "goldhen24.bin";
-    setTimeout(poc, 500); 
-}
-</script>
-<script src="int64.js"></script>
-<script src="rop.js"></script>
-<script src="kexploit.js"></script>
-<script src="webkit.js"></script>
 </head>
 <body>
 <div class="element-dengan-garis">
-<span class="title" style="text-align:center;">Clown King Host 9.00 fw</span>
+<span id="clock"></span>
+<span id="currentDate"></span>
+<span class="title" style="text-align:center;">Clown King Host - PS4 exploit</span>
+
 </div>
-<p></p>
-<div id=all style="text-align:center">
-<h1 id=progress style='font-size:25px;text-align:center;color:white;'>Status</h1>
-<button class="submit-button" onMouseOver="progress.innerHTML='GoldHen v2.2.4 by SISTR0'"; onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen22()">GoldHEN 2.2.4</button>
-<button class="submit-button" onMouseOver="progress.innerHTML='GoldHen v2.3 by SISTR0'"; onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen23()">GoldHEN 2.3</button>
-<button class="submit-button" onMouseOver="progress.innerHTML='GoldHen v2.4b14 by SISTR0'"; onmouseout="progress.innerHTML='Status'" type="button" onclick="goldhen24()">GoldHEN 2.4b14</button>
-<br><br>
-<button class="submit-button" onMouseOver="progress.innerHTML='Create dummy files in PS4 folder'"; onmouseout="progress.innerHTML='Status'" type="button" onclick="load_DisableUpdates()">Disable Updates</button>
-<button class="submit-button" onMouseOver="progress.innerHTML='Delete dummy files in PS4 folder'"; onmouseout="progress.innerHTML='Status'" type="button" onclick="load_EnableUpdates()">Enable Updates</button>
-<button class="submit-button" onMouseOver="progress.innerHTML='Enable FTP server for PS4'"; onmouseout="progress.innerHTML='Status'" type="button" onclick="load_FTP()">FTP</button>
-<button class="submit-button" onMouseOver="progress.innerHTML='Copy installed games to USB'"; onmouseout="progress.innerHTML='Status'" type="button" onclick="load_App2USB()">App2USB</button>
-<br><br>
-<button class="submit-button" onMouseOver="progress.innerHTML='Enable WebRTE'"; onmouseout="progress.innerHTML='Status'" type="button" onclick="load_WebRTE()">WebRTE</button>
-<button class="submit-button" onMouseOver="progress.innerHTML='Enable PS4 debug'"; onmouseout="progress.innerHTML='Status'" type="button" onclick="load_PS4Debug()">ps4debug</button>
-<button class="submit-button" onMouseOver="progress.innerHTML='Orbis Toolbox Loader'"; onmouseout="progress.innerHTML='Status'" type="button" onclick="load_Orbis()">Orbis Toolbox</button>
-</div>
+<!-- script jam -->
 <script>
-function load_DisableUpdates(){
-    progress.innerHTML="Payload sending... please wait";
-    PLfile = "disableupdates.bin";
-    GetPL();
-}
-function load_EnableUpdates(){
-    progress.innerHTML="Payload sending... please wait";
-    PLfile = "enableupdates.bin";
-    GetPL();
-}
-function load_FTP(){
-    progress.innerHTML="Payload sending... please wait";
-    PLfile = "ftp.bin";
-    GetPL();
-}
-function load_App2USB(){
-    progress.innerHTML="Payload sending... please wait";
-    PLfile = "app2usb.bin";
-    GetPL();
-}
-function load_WebRTE(){
-    progress.innerHTML="Payload sending... please wait";
-    PLfile = "WebRTE.bin";
-    GetPL();
-}
-function load_PS4Debug(){
-    progress.innerHTML="Payload sending... please wait";
-    PLfile = "ps4debug.bin";
-    GetPL();
-}
-function load_Orbis(){
-    progress.innerHTML="Payload sending... please wait";
-    PLfile = "Orbis-Toolbox-900.bin";
-    GetPL();
-}
+    function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+        var timeString = hours + ":" + minutes;
+
+        document.getElementById("clock").innerText = timeString;
+
+        setTimeout(updateClock, 1000); // Update every second
+    }
+
+    // Call the function to set the initial time
+    updateClock();
 </script>
+        <script>
+        function displayCurrentDate() {
+            var currentDateElement = document.getElementById('currentDate');
+
+            var currentDate = new Date();
+            var day = currentDate.getDate();
+            var month = currentDate.getMonth() + 1; // Months are zero-based
+            var year = currentDate.getFullYear();
+
+            var formattedDate = day + '/' + month + '/' + year;
+
+            currentDateElement.textContent = '' + formattedDate;
+        }
+
+        // Panggil fungsi untuk menampilkan tanggal saat halaman dimuat
+        window.onload = displayCurrentDate;
+    </script>
+<main>
+    <section>
+        Clown Host Beta - Main Menu
+<p style="text-align:center;">
+        <a href="/office.html"><button class="submit-button">Microsoft Office Auto KMS Activator</button></a>
+        <a href="/jailbreak"><button class="submit-button">PS4 9.00 Menu</button></a>
+        <a href="/jb"><button class="submit-button">PS4 9.00 Auto exploit</button></a>
+</p>
+    </section>
+</main>
 <footer>
-  <b style="color: yellow;">Compiled by</b>: Clown King
-  <p><b style="color: yellow;">Credits</b>: SiSTRO, Sleirsgoevy, ChendoChap, and many more for PS-JB scene.</p>
+This website created and designed by:<b style="color:red;"> Clown King</b>
+<p>You can contact me at: <b style="color:red;">johnton211@gmail.com</b></p>
 </footer>
+<b><div id="clock"></div></b>
 </body>
 </html>
