@@ -74,6 +74,11 @@
     </style>
     <title>Clown Host | PS4 9.00 Exploit</title>
 <script>
+			window.applicationCache.ondownloading=function(){document.getElementById("progress").innerHTML="Page Caching Started!!";};
+			window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";};
+			window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML="Page Cached Successfully!!";setTimeout(function(){document.getElementById("progress").innerHTML="Reopen the Page !!"; }, 1500);};
+</script>
+<script>
 function load_poc(){
  var req = new XMLHttpRequest();
  req.responseType = "arraybuffer";
@@ -98,12 +103,12 @@ function load_poc(){
 }
 
 function GetPL(){
- var req=new XMLHttpRequest();req.open("GET","http://127.0.0.1:9090");req.send();
+ var req=new XMLHttpRequest();req.open("GET","https://127.0.0.1:9090/status");req.send();
  req.onerror=function(){alert("Cannot Load Payload Because The BinLoader Server Is Not Running");return;};
  req.onload=function(){
   var responseJson=JSON.parse(req.responseText);
   if(responseJson.status=="ready"){
-   getPayload(PLfile,function(req){if((req.status===200||req.status===304)&&req.response){sendPayload("http://127.0.0.1:9090",req.response);}});
+   getPayload(PLfile,function(req){if((req.status===200||req.status===304)&&req.response){sendPayload("https://127.0.0.1:9090",req.response);}});
   }
   else{alert("Cannot Load Payload Because The BinLoader Server Is Busy");return;}
  };
@@ -150,20 +155,6 @@ function goldhen24(){
 <script src="webkit.js"></script>
 </head>
 <body>
-<script>
-window.applicationCache.ondownloading = function()
-{
-alert("Caching started! Press OK and check progress on the bottom of the page.")
-};
-window.applicationCache.onprogress = function(a)
-{
-document.getElementById("progress").innerHTML="Caching "+(Math.round(100*(a.loaded/a.total)))+"% Completed";
-};
-window.applicationCache.oncached = window.applicationCache.onupdateready = function()
-{
-alert("Page cached successfully. Press OK.")
-};
-</script>
 <div class="element-dengan-garis">
 <span class="title" style="text-align:center;">Clown King Host 9.00 fw</span>
 </div>
