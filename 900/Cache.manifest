@@ -3,7 +3,7 @@ CACHE MANIFEST
 
 CACHE:
 app2usb.bin
-cache.manifest
+Cache.manifest
 disableupdates.bin
 enableupdates.bin
 ftp.bin
@@ -13,7 +13,7 @@ goldhen24.bin
 index.html
 int64.js
 kexploit.js
-Orbis-Toolbox-900.bin
+Orbis.bin
 payload.bin
 ps4debug.bin
 rop.js
