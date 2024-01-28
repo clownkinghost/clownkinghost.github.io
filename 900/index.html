@@ -80,6 +80,7 @@
 </script>
 <script>
 function load_poc(){
+ if (sessionStorage.exploit == "yes"){
  var req = new XMLHttpRequest();
  req.responseType = "arraybuffer";
  req.open('GET', PLfile);
@@ -97,7 +98,7 @@ function load_poc(){
    pl.set(shellcode,0);
    var pthread = p.malloc(0x10);
    chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-   goldset();
+	setTimeout(allset, 50);
   }
  };
 }
