@@ -98,7 +98,7 @@ function load_poc(){
 }
 
 function GetPL(){
- var req=new XMLHttpRequest();req.open("GET","http://127.0.0.1:9090/status");req.send();
+ var req=new XMLHttpRequest();req.open("GET","http://127.0.0.1:9090");req.send();
  req.onerror=function(){alert("Cannot Load Payload Because The BinLoader Server Is Not Running");return;};
  req.onload=function(){
   var responseJson=JSON.parse(req.responseText);
