@@ -77,18 +77,9 @@
     </style>
     <title>Clown Host | PS4 9.00 Exploit</title>
 <script>
-window.applicationCache.ondownloading = function()
-{
-alert("Caching started! Press OK and check progress on the bottom of the page.")
-};
-window.applicationCache.onprogress = function(a)
-{
-document.getElementById("progress").innerHTML="Caching "+(Math.round(100*(a.loaded/a.total)))+"% Completed";
-};
-window.applicationCache.oncached = window.applicationCache.onupdateready = function()
-{
-alert("Page cached successfully. Press OK and reopen browser.")
-};
+window.applicationCache.ondownloading=function(){document.getElementById("progress").innerHTML="Page Caching Started!!";};
+window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML=(Math.round(100*(a.loaded/a.total)))+"%";};
+window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML="Page Cached Successfully!!";setTimeout(function(){document.getElementById("progress").innerHTML="Reopen the Page !!"; }, 1500);};
 </script>
 <script>
 function load_poc(){
