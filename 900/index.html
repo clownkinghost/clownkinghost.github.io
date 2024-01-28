@@ -76,21 +76,6 @@
     </style>
     <title>Clown Host | PS4 9.00 Exploit</title>
 <script>
-window.applicationCache.ondownloading = function()
-{
-alert("Caching started! Press OK and check progress on the bottom of the page.")
-};
-window.applicationCache.onprogress = function(a)
-{
-document.getElementById("progress").innerHTML="Caching "+(Math.round(100*(a.loaded/a.total)))+"% Completed";
-};
-window.applicationCache.oncached = window.applicationCache.onupdateready = function()
-{
-alert("Page cached successfully. Press OK.")
-document.getElementById("progresscon").style.display="none";
-};
-</script>
-<script>
 function load_poc(){
  var req = new XMLHttpRequest();
  req.responseType = "arraybuffer";
@@ -167,6 +152,21 @@ function goldhen24(){
 <script src="webkit.js"></script>
 </head>
 <body>
+<script>
+window.applicationCache.ondownloading = function()
+{
+alert("Caching started! Press OK and check progress on the bottom of the page.")
+};
+window.applicationCache.onprogress = function(a)
+{
+document.getElementById("progress").innerHTML="Caching "+(Math.round(100*(a.loaded/a.total)))+"% Completed";
+};
+window.applicationCache.oncached = window.applicationCache.onupdateready = function()
+{
+alert("Page cached successfully. Press OK.")
+document.getElementById("progresscon").style.display="none";
+};
+</script>
 <div class="element-dengan-garis">
 <span class="title" style="text-align:center;">Clown King Host 9.00 fw</span>
 </div>
@@ -219,7 +219,7 @@ function load_PS4Debug(){
 }
 function load_Orbis(){
     progress.innerHTML="Payload sending... please wait";
-    PLfile = "Orbis-Toolbox-900.bin";
+    PLfile = "Orbis.bin";
     GetPL();
 }
 </script>
