@@ -31,10 +31,7 @@
             text-align: center;
             padding: 1em;
             bottom: 0;
-			border: 2px solid white;
-      	    margin: 20px auto;
-            max-width: 650px;
-      	    border-radius: 10px;
+	     	margin: 20px auto;
 
         }
         .submit-button {
@@ -92,7 +89,7 @@ document.getElementById("progress").innerHTML="Caching "+(Math.round(100*(a.load
 };
 window.applicationCache.oncached = window.applicationCache.onupdateready = function()
 {
-alert("Page cached successfully. Press OK and reopen browser.")
+alert("Page cached successfully. Press OK and re-open browser.")
 document.getElementById("progresscon").style.display="none";
 };
 </script>
@@ -114,6 +111,7 @@ document.getElementById("progresscon").style.display="none";
 <button class="submit-button" onmouseover="progress.innerHTML='Enable WebRTE'" onmouseout="progress.innerHTML='Status'" onclick="load_webrte()"> WebRTE </button>
 <button class="submit-button" onmouseover="progress.innerHTML='Enable Ps4 Debug'" onmouseout="progress.innerHTML='Status'" onclick="load_ps4debug()"> Ps4Debug </button>
 <a href="http://ps4trainer.com/Trainer/index.html"><button class="submit-button" onmouseover="progress.innerHTML='PS4 Trainer Website'" onmouseout="progress.innerHTML='Status'"> Ps4trainer </button></a>
+<button class="submit-button" onmouseover="progress.innerHTML='Dump kernel to USB'" onmouseout="progress.innerHTML='Status'" onclick="load_kernelDumper()"> Kernel Dumper </button>
 </div>
 <footer>
   <b style="color: yellow;">Compiled by</b>: Clown King
@@ -355,6 +353,13 @@ function load_ps4debug(){
 progress.innerHTML="Loading PS4 Debug... Please Wait"
 LoadedMSG = "PS4 Debug Loaded ..."
 PLfile = "ps4debug.bin";
+load_poc();
+}
+
+function load_kernelDumper(){
+progress.innerHTML="Kernel Dumper... Please Wait"
+LoadedMSG = "Kernel Dumper Loaded ..."
+PLfile = "kerneldumper.bin";
 load_poc();
 }
 
