@@ -1,81 +1,121 @@
 <html manifest="cache.manifest">
 <head>
-    <title>Clown King PSFree Exploit Host</title>
+    <title>PSfree webkit exploit host</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+ <style>
         body {
-            background-color: #242629;
+            background-color: #000;
+            color: #fff;
+            background-size: cover;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'sans-serif';
+	    font-size: 20px;
         }
 
-        .loader {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            margin: -75px 0 0 -75px;
-
-            border: 10px solid #1f1e1e;
-            border-radius: 50%;
-            border-top: 10px solid #044595;
-            border-left: 10px solid #044595;
-            width: 120px;
-            height: 120px;
-            animation: spin 1s linear infinite;
+        .dropdown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
+        select {
+            font-size: 16px; /* Ukuran font dropdown */
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        footer {
+	    color: #fff;
+            text-align: center;
+            padding: 1em;
+            bottom: 0;
+	     	margin: 20px auto;
 
-            100% {
-                transform: rotate(360deg);
-            }
+        }
+        .submit-button {
+            font-size: 20px; /* Ukuran font tombol submit */
+            font-weight: bold;
+            background-color: #2a2a2a; /* Warna tombol submit */
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Efek hover */
+            text-decoration: none;
         }
 
-        .info {
-            overflow: hidden;
-            position: fixed;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-
-            font-size: 45px;
-            font-family: sans-serif;
-            color: #b8b8b8;
-
-            transform: translate(-50%, -50%);
+        .submit-button:hover {
+            background-color: #fff; /* Warna tombol saat dihover */
+			color: #2a2a2a;
         }
-
-        .j {
-            font-size: 15px;
-            color: #2F3335;
+	.title {
+	font-size: 30px; 
+	color: #fff;
+	align-items: center;
+	justify-content: center;
+ 	display: flex;
+	font-weight: bold;
+	}
+        .element-dengan-garis {
+            border-bottom: 2px solid grey; /* Garis tepi 2 piksel dengan warna biru */
+            padding: 20px; /* Ruang dalam elemen */
+            margin: auto; /* Ruang luar elemen */
+	    text-align: center;
+	    max-width: 1285px;
         }
+      #progress {
+		font-weight: bold;
+		font-size: 20px;
+		}
     </style>
-    <script>
-        function allset() {
-            document.getElementById("loader").style.display = "none";
-            document.getElementById("allset").style.display = "block";
-        }
-
-        function awaitpl() {
-            document.getElementById("loader").style.display = "none";
-            document.getElementById("awaiting").style.display = "block";
-        }
-    </script>
-    <script src="./int64.js"></script>
+     <script src="./int64.js"></script>
     <script src="./rop.js"></script>
     <script src="./kexploit.js"></script>
     <script type=module src="./alert.mjs"></script>
-</head>
-
-</html>
-
 <body">
-    <div id="loader" class="loader"></div>
-    <div id="awaiting" class="info" style="display:none;">You're all set!</div>
-    <div id="allset" class="info" style="display:none;">You're all set!</div>
-<script>
-
-</script>
+<div id=all style="text-align:center">
+<br><br>
+<h1 id="progress" style="font-size: 25px; color:#fff; text-align:center;">Loading ... please wait</h1>
 </body>
+<footer>
+  <b style="color: yellow;">Compiled by</b>: Clown King
+  <p><b style="color: yellow;">Credits</b>: SiSTRO, Sleirsgoevy, ChendoChap, and many more for PS-JB scene.</p>
+</footer>
+</html>
+<script>
+function allset(){
+progress.innerHTML = LoadedMSG
+}
 
+function load_poc(){
+  var req = new XMLHttpRequest();
+  req.responseType = "arraybuffer";
+  req.open('GET', PLfile);
+  req.send();
+  req.onreadystatechange = function () {
+    if (req.readyState == 4) {
+    PLD = req.response;
+    var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
+    var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
+    var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
+    var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
+    tmp.set(new Uint8Array(req.response), 0);
+    tmp.set(padding, req.response.byteLength);
+    var shellcode = new Uint32Array(tmp.buffer);
+    pl.set(shellcode,0);
+    var pthread = p.malloc(0x10);
+    chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+	allset();
+    }
+  };
+}
+
+function jbdone(){
+LoadedMSG = "GoldHEN v2.4b15 Loaded ...";
+PLfile = "goldhen.bin";
+setTimeout(load_poc, 500);
+}
+</script>
