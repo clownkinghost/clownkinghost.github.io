@@ -98,7 +98,7 @@ document.getElementById("progresscon").style.display="none";
 </div>
 <div id=all style="text-align:center">
 <h1 id=progress style='font-size:25px;text-align:center;color:white;'>Status</h1>
-<button class="submit-button" onmouseover="progress.innerHTML='GoldHEN v2.4b14 for 9.00 FW'" onmouseout="progress.innerHTML='Status'" onclick="load_goldhen24b14()"> GoldHEN v2.4b14 </button>
+<button class="submit-button" onmouseover="progress.innerHTML='GoldHEN v2.4b15 for 9.00 FW'" onmouseout="progress.innerHTML='Status'" onclick="load_goldhen24b14()"> GoldHEN v2.4b15 </button>
 <button class="submit-button" onmouseover="progress.innerHTML='GoldHEN v2.3 for 9.00 FW'" onmouseout="progress.innerHTML='Status'" onclick="load_goldhen23()"> GoldHEN v2.3 </button>
 <button class="submit-button" onmouseover="progress.innerHTML='Send a Payload using port 9020'" onmouseout="progress.innerHTML='Status'" onclick="load_binloader()"> Bin Loader </button>
 <br><br>
@@ -284,15 +284,15 @@ LoadedMSG = "Linux Loader Launched ..."
 }
 
 function load_goldhen24b14(){
-progress.innerHTML="Loading GoldHEN v2.4b14... Please Wait";
-LoadedMSG = "GoldHEN v2.4b14 Loaded ...";
+progress.innerHTML="Loading GoldHEN v2.4b15... Please Wait";
+LoadedMSG = "GoldHEN v2.4b15 Loaded!";
 PLfile = "goldhen24.bin";
 load_poc();
 }
 
 function load_goldhen23(){
 progress.innerHTML="Loading GoldHEN v2.3... Please Wait";
-LoadedMSG = "GoldHEN v2.3 Loaded ...";
+LoadedMSG = "GoldHEN v2.3 Loaded!";
 PLfile = "goldhen23.bin";
 load_poc();
 }
@@ -310,7 +310,7 @@ else {
 
 function load_ftp(){
 progress.innerHTML="Loading FTP... Please Wait"
-LoadedMSG = "FTP Loaded ..."
+LoadedMSG = "FTP Loaded!"
 PLfile = "ftp.bin";
 load_poc();
 }
@@ -323,42 +323,42 @@ load_poc();
 }
 function load_enablebUpdates(){
 progress.innerHTML="Loading Enable Updates... Please Wait"
-LoadedMSG = "Enable Updates Loaded ..."
+LoadedMSG = "Enable Updates Loaded!"
 PLfile = "enableupdates.bin";
 load_poc();
 }
 
 function load_disableUpdates(){
 progress.innerHTML="Loading Disable Updates... Please Wait"
-LoadedMSG = "Disable Updates Loaded ..."
+LoadedMSG = "Disable Updates Loaded!"
 PLfile = "disableupdates.bin";
 load_poc();
 }
 
 function load_toolbox(){
 progress.innerHTML="Loading Orbis-Toolbox... Please Wait"
-LoadedMSG = "Orbis-Toolbox Loaded ..."
+LoadedMSG = "Orbis-Toolbox Loaded!"
 PLfile = "Orbis.bin";
 load_poc();
 }
 
 function load_webrte(){
 progress.innerHTML="Loading WebRTE... Please Wait"
-LoadedMSG = "WebRTE Loaded ..."
+LoadedMSG = "WebRTE Loaded!"
 PLfile = "WebRTE.bin";
 load_poc();
 }
 
 function load_ps4debug(){
 progress.innerHTML="Loading PS4 Debug... Please Wait"
-LoadedMSG = "PS4 Debug Loaded ..."
+LoadedMSG = "PS4 Debug Loaded!"
 PLfile = "ps4debug.bin";
 load_poc();
 }
 
 function load_kernelDumper(){
 progress.innerHTML="Kernel Dumper... Please Wait"
-LoadedMSG = "Kernel Dumper Loaded ..."
+LoadedMSG = "Kernel Dumper Loaded!"
 PLfile = "kerneldumper.bin";
 load_poc();
 }
