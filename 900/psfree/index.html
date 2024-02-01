@@ -12,22 +12,11 @@
             height: 100vh;
             margin: 0;
             font-family: 'sans-serif';
-	    font-size: 20px;
-        }
-
-        .dropdown-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        select {
-            font-size: 16px; /* Ukuran font dropdown */
-            padding: 10px;
-            margin-bottom: 10px;
+			font-size: 0px;
         }
         footer {
-	    color: #fff;
+			font-size: 20px;
+			color: #fff;
             text-align: center;
             padding: 1em;
             bottom: 0;
@@ -60,25 +49,35 @@
 	font-weight: bold;
 	}
         .element-dengan-garis {
-            border-bottom: 2px solid grey; /* Garis tepi 2 piksel dengan warna biru */
-            padding: 20px; /* Ruang dalam elemen */
-            margin: auto; /* Ruang luar elemen */
+        border-bottom: 2px solid grey; /* Garis tepi 2 piksel dengan warna biru */
+        padding: 20px; /* Ruang dalam elemen */
+        margin: auto; /* Ruang luar elemen */
 	    text-align: center;
 	    max-width: 1285px;
         }
       #progress {
+		color: yellow;
 		font-weight: bold;
 		font-size: 20px;
+		overflow: hidden;
+		position: fixed;
+		position: absolute;
+		top: 35%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		}
     </style>
-     <script src="./int64.js"></script>
+    <script src="./int64.js"></script>
     <script src="./rop.js"></script>
     <script src="./kexploit.js"></script>
     <script type=module src="./alert.mjs"></script>
-<body">
+<body>
+<div class="element-dengan-garis">
+<span class="title">Clown King Host Auto Exploit New Webkit</span>
+</div>
 <div id=all style="text-align:center">
 <br><br>
-<h1 id="progress" style="font-size: 25px; color:#fff; text-align:center;">Jailbreaking ... please wait</h1>
+<h1 id="progress" style="font-size: 25px;">Jailbreaking ... please wait</h1>
 </body>
 <footer>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
