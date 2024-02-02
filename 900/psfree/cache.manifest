@@ -2,6 +2,7 @@ CACHE MANIFEST
 
 CACHE: 
 alert.mjs
+cache.html
 cache.manifest
 config.mjs
 exploit.mjs
