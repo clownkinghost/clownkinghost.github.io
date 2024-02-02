@@ -1,0 +1,95 @@
+
+<html manifest="cache.manifest">
+<head>
+    <title>PSfree webkit exploit host</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ <style>
+        body {
+            background-color: #000;
+            color: #000;
+            background-size: cover;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: auto;
+            font-family: 'sans-serif';
+			overflow: hidden;
+        }
+        footer {
+			width:100%;
+			color:white;
+			margin-top:0%;
+			font-size:25px;
+			text-align:center;
+			border-radius:30px;
+			padding:20px;
+			line-height:12px;
+			position:absolute;bottom:0px;
+
+        }
+        .submit-button {
+            font-size: 20px; /* Ukuran font tombol submit */
+            font-weight: bold;
+            background-color: #2a2a2a; /* Warna tombol submit */
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Efek hover */
+            text-decoration: none;
+        }
+
+        .submit-button:hover {
+            background-color: #fff; /* Warna tombol saat dihover */
+			color: #2a2a2a;
+        }
+	.title {
+	font-size: 30px; 
+	color: #fff;
+	align-items: center;
+	justify-content: center;
+ 	display: flex;
+	font-weight: bold;
+	}
+        .element-dengan-garis {
+        border-bottom: 2px solid grey; /* Garis tepi 2 piksel dengan warna biru */
+        padding: 20px; /* Ruang dalam elemen */
+        margin: auto; /* Ruang luar elemen */
+	    text-align: center;
+	    max-width: 1285px;
+        }
+      #progress {
+		color: yellow;
+		font-weight: bold;
+		font-size: 20px;
+		overflow: hidden;
+		display: flex;
+		position: fixed;
+		position: absolute;
+		top: 35%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		}
+    </style>
+</head>
+<script>
+history.replaceState(null,null,'index.html');var histlength=history.length;history.go(-histlength);
+function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));setTimeout(function(){window.progress.innerHTML="Installing Offline Cache: " + Percent + "%";},500)}
+function DisplayCacheProgress(){setTimeout(function(){window.progress.innerHTML="Page Cached Successfully. Please Re-Open the Browser!";},1500);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+</script>
+<body>
+<div class="element-dengan-garis">
+<span class="title">Clown King Host Auto Exploit New Webkit</span>
+</div>
+<div id=all style="text-align:center">
+<br><br>
+<h1 id="progress" style="font-size: 25px;"></h1>
+</div>
+<footer>
+  <b style="color: yellow;">Compiled by</b>: <span style="color:#fff;">Clown King</span>
+  <p><b style="color: yellow;">Credits</b>: <span style="color:#fff;">SiSTRO, Sleirsgoevy, ChendoChap, and many more for PS-JB scene.</span></p>
+  </footer>
+</body>
+</html>
+
