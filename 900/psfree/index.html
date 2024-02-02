@@ -10,17 +10,20 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0;
+            margin: auto;
             font-family: 'sans-serif';
-			font-size: 0px;
+			overflow: hidden;
         }
         footer {
-			font-size: 20px;
-			color: #fff;
-            text-align: center;
-            padding: 1em;
-            bottom: 0;
-	     	margin: 20px auto;
+			width:100%;
+			color:white;
+			margin-top:0%;
+			font-size:25px;
+			text-align:center;
+			border-radius:30px;
+			padding:20px;
+			line-height:12px;
+			position:absolute;bottom:0px;
 
         }
         .submit-button {
@@ -60,6 +63,7 @@
 		font-weight: bold;
 		font-size: 20px;
 		overflow: hidden;
+		display: flex;
 		position: fixed;
 		position: absolute;
 		top: 35%;
@@ -77,17 +81,16 @@
 </div>
 <div id=all style="text-align:center">
 <br><br>
-<h1 id="progress" style="font-size: 25px;">Jailbreaking ... please wait</h1>
+<h1 id="progress" style="font-size: 25px;"></h1>
 </body>
 <footer>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <b style="color: yellow;">Compiled by</b>: <span style="color:#fff;">Clown King</span>
   <p><b style="color: yellow;">Credits</b>: <span style="color:#fff;">SiSTRO, Sleirsgoevy, ChendoChap, and many more for PS-JB scene.</span></p>
 </footer>
 </html>
 <script>
 function allset(){
-progress.innerHTML = LoadedMSG
+window.progress.innerHTML = LoadedMSG
 }
 
 function load_poc(){
@@ -114,7 +117,7 @@ function load_poc(){
 }
 
 function jbdone(){
-LoadedMSG = "Jailbreak success ... GoldHEN Loaded!";
+window.progress.innerHTML="Jailbreak Done ... ";
 PLfile = "goldhen.bin";
 setTimeout(load_poc, 500);
 }
