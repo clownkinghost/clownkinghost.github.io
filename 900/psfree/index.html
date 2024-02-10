@@ -1,8 +1,9 @@
-<html manifest="cache.manifest">
+<html>
+
 <head>
-    <title>Clown King Host Auto Exploit GoldHEN</title>
+    <title>Clown King Auto Exploit Host - GoldHEN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
- <style>
+    <style>
         body {
             background-color: #000;
             color: #000;
@@ -13,8 +14,68 @@
             margin: auto;
             font-family: 'sans-serif';
 			overflow: hidden;
+			text-align: center;
         }
-        footer {
+
+        .loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -75px 0 0 -75px;
+
+            border: 10px solid #1f1e1e;
+            border-radius: 50%;
+            border-top: 10px solid #044595;
+            border-left: 10px solid #044595;
+            width: 120px;
+            height: 120px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .info {
+		font-weight:bold;
+		text-shadow: 4px 4px 4px black;
+		color: yellow;
+		font-size:17px;
+        }
+
+        .j {
+            font-size: 15px;
+            color: #2F3335;
+        }
+			.title {
+	font-size: 30px; 
+	color: #fff;
+	align-items: center;
+	justify-content: center;
+ 	display: flex;
+	font-weight: bold;
+	}
+		
+		#progress {
+		color: yellow;
+		font-weight: bold;
+		font-size: 45px;
+		overflow: hidden;
+		display: flex;
+		position: fixed;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		}
+
+		footer {
 			width:100%;
 			color:white;
 			margin-top:0%;
@@ -26,90 +87,33 @@
 			position:absolute;bottom:0px;
 
         }
-        .submit-button {
-            font-size: 20px; /* Ukuran font tombol submit */
-            font-weight: bold;
-            background-color: #2a2a2a; /* Warna tombol submit */
-            color: #fff;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease; /* Efek hover */
-            text-decoration: none;
-        }
-
-        .submit-button:hover {
-            background-color: #fff; /* Warna tombol saat dihover */
-			color: #2a2a2a;
-        }
-	.title {
-	font-size: 30px; 
-	color: #fff;
-	align-items: center;
-	justify-content: center;
- 	display: flex;
-	font-weight: bold;
-	}
-        .element-dengan-garis {
-        border-bottom: 2px solid grey; /* Garis tepi 2 piksel dengan warna biru */
+		 .element-dengan-garis {
+        border-bottom: 2px solid white; /* Garis tepi 2 piksel dengan warna biru */
         padding: 20px; /* Ruang dalam elemen */
         margin: auto; /* Ruang luar elemen */
 	    text-align: center;
-	    max-width: 1285px;
+	    max-width: auto;
         }
-      #progress {
-		color: yellow;
-		font-weight: bold;
-		font-size: 20px;
-		overflow: hidden;
-		display: flex;
-		position: fixed;
-		position: absolute;
-		top: 35%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		}
     </style>
-	<script>
-	if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-  function loadFile(fileName) {
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", fileName, false);
-    xhr.overrideMimeType("text/plain; charset=x-user-defined");
-    xhr.send();
-    let array = Uint8Array.from(xhr.response, c => c.charCodeAt(0));
-    if (fileName.endsWith(".bz2")) {
-      try {
-        PLS = bzip2.simple(bzip2.array(array));
-      } catch(error) {
-        alert(fileName + ": \"" + error + "\"\n");
-        throw error;
-      }
-    }
-    return array;
-  }
-  </script>
     <script src="./int64.js"></script>
     <script src="./rop.js"></script>
     <script src="./kexploit.js"></script>
     <script type=module src="./alert.mjs"></script>
-<body>
+</head>
+</html>
+<body">
 <div class="element-dengan-garis">
 <span class="title">Clown King Host Auto Exploit New Webkit</span>
 </div>
-<div id=all style="text-align:center">
-<br><br>
-<h1 id="progress" style="font-size: 25px;">Jailbreaking..... Please Wait</h1>
-</div>
+<h1 id="progress">Jailbreaking... Please Wait</h1>
+<div id=all style="text-align:center;"></div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 <footer>
-  <b style="color: yellow;">Compiled by</b>: <span style="color:#fff;">Clown King</span>
-  <p><b style="color: yellow;">Credits</b>: <span style="color:#fff;">SiSTRO, Sleirsgoevy, ChendoChap, and many more for PS-JB scene.</span></p>
+  <b style="color: yellow;">Credits</b>: <span style="color:#fff;">SiSTRO, Sleirsgoevy, ChendoChap, and many more for PS-JB scene.</span>
 </footer>
-</html>
 <script>
-function allset(){
+function selesai(){
 window.progress.innerHTML = LoadedMSG
 }
 
@@ -131,15 +135,15 @@ function load_poc(){
     pl.set(shellcode,0);
     var pthread = p.malloc(0x10);
     chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
-	allset();
+	selesai();
     }
   };
 }
 </script>
 <script>
 function jbdone(){
-progress.innerHTML="Jailbreak Done ... ";
+progress.innerHTML="Jailbreak Done!";
 PLfile = "goldhen.bin";
-setTimeout(load_poc, 500);
+load_poc();
 }
 </script>
