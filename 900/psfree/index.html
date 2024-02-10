@@ -95,6 +95,25 @@
 	    max-width: auto;
         }
     </style>
+<script>
+if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+  function loadFile(fileName) {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", fileName, false);
+    xhr.overrideMimeType("text/plain; charset=x-user-defined");
+    xhr.send();
+    let array = Uint8Array.from(xhr.response, c => c.charCodeAt(0));
+    if (fileName.endsWith(".bz2")) {
+      try {
+        PLS = bzip2.simple(bzip2.array(array));
+      } catch(error) {
+        alert(fileName + ": \"" + error + "\"\n");
+        throw error;
+      }
+    }
+    return array;
+  }
+</script>
     <script src="./int64.js"></script>
     <script src="./rop.js"></script>
     <script src="./kexploit.js"></script>
