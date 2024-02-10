@@ -23,6 +23,9 @@ export function die(msg) {
 }
 
 export function debug_log(msg) {
+    document.getElementById("progress").style.color = "yellow";
+    document.getElementById("progress").innerHTML=msg;
+    
     let textNode = document.createTextNode(msg);
     let node = document.createElement("p").appendChild(textNode);
 
